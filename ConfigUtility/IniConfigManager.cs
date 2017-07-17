@@ -13,7 +13,7 @@ namespace ConfigUtilty
     {
 
         public IniConfigManager(string filepath)
-            :base(filepath, File.ReadAllText(filepath).ToXml())
+            :base(filepath, File.ReadAllLines(filepath).ToXml())
         {
 
         }
