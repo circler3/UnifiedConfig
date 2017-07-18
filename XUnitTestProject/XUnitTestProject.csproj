@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConfigUtility\ConfigUtility.csproj" />
+    <ProjectReference Include="..\ConfigUtility\UnifiedConfig.csproj" />
+    <ProjectReference Include="..\UnifiedConfig\UnifiedConfig.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using ConfigUtilty;
+using UnifiedConfig;
 
 namespace XUnitTestProject
 {

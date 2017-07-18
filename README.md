@@ -1,4 +1,4 @@
-# ConfigUtility
+# UnifiedConfig
 A common C# class to manipulate xml and ini files. 
 
 ## Features
@@ -7,7 +7,7 @@ A common C# class to manipulate xml and ini files.
 * Saving file will not change the original format.
 
 ## Usage:
-1. compile the class library and add reference of the dlls including the "ConfigUtility.dll" to your project.
+1. compile the class library and add reference of the dlls including the "UnifiedConfig.dll" to your project.
 2. add using statement to your namespaces.
 3. you can call the functions by using the following code or just read the test class.
 
@@ -20,7 +20,7 @@ Assert.Equal("5", config[@"//Default/Interval"]);
 
 ## Roadmap
 
- Issues and PRs are welcomed.
+Issues and PRs are welcomed.
 
- [ ] Support for some other formats  
- [ ] Nuget package
+[ ] Support for some other formats  
+[X] Nuget package

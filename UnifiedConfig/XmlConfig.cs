@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace ConfigUtilty
+namespace UnifiedConfig
 {
     internal class XmlConfig : ConfigBase
     {

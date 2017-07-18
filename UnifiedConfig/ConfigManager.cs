@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConfigUtilty
+namespace UnifiedConfig
 {
     /// <summary>
     /// Initialize the config which represents a single file.

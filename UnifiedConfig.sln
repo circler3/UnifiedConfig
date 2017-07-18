@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigUtility", "ConfigUtility\ConfigUtility.csproj", "{76B8B5C1-571C-470C-B6A5-318417AE75D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedConfig", "UnifiedConfig\UnifiedConfig.csproj", "{76B8B5C1-571C-470C-B6A5-318417AE75D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{C6D64329-4E2F-4F6C-84F5-8BCF206F01A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{C6D64329-4E2F-4F6C-84F5-8BCF206F01A0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35DA8240-9DD4-43F9-9A4F-6AE004F73AC9}"
 	ProjectSection(SolutionItems) = preProject

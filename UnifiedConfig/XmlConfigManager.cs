@@ -7,7 +7,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Xml.XPath;
 
-namespace ConfigUtilty
+namespace UnifiedConfig
 {
     internal class XmlConigManager : XmlConfig
     {

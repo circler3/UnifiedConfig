@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <PackageId>UnifiedConfig</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>circler3</Authors>
+    <Description>Common utility for both xml and ini files</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Copyright>Copyright 2017 (c) circler3.</Copyright>
+    <PackageTags>config configuration utility xml ini</PackageTags>
+    <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/circler3/UnifiedConfig</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
+    <AssemblyName>UnifiedConfig</AssemblyName>
+    <RootNamespace>UnifiedConfig</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard1.3\UnifiedConfig.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
