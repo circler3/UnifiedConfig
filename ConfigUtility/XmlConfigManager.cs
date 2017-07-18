@@ -13,14 +13,14 @@ namespace ConfigUtilty
     {
 
         public XmlConigManager(string filepath)
-            :base(filepath, XDocument.Load(filepath))
+            :base(filepath, XDocument.Parse(File.ReadAllText(filepath)))
         {
 
         }
 
         public override void Save(string filepath = null)
         {
-            File.WriteAllText(filepath ?? _sourceFilePath, _root.ToIni());
+            File.WriteAllText(filepath ?? _sourceFilePath, _xDoc.ToString());
         }
     }
 }

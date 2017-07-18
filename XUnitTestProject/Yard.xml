@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--使用“米”作为单位-->
+<Yard>
+  <Section ID="1">
+    <Block Name="">
+      <MaxHeight>200</MaxHeight>
+      <MinHeight>5000</MinHeight>
+      <Border>
+        <Point X="100" Y="35"/>
+        <Point X="0" Y="350"/>
+        <Point X="0" Y="630"/>
+        <Point X="1000" Y="229"/>
+      </Border>
+    </Block>
+  </Section>
+  <Section ID="2">
+    <Block Name="2">
+      <MaxHeight>200</MaxHeight>
+      <MinHeight>50</MinHeight>
+      <Border>
+        <Point X="1000" Y="90"/>
+        <Point X="0" Y="850"/>
+        <Point X="0" Y="1000"/>
+        <Point X="1000" Y="100"/>
+      </Border>
+    </Block>
+  </Section>
+</Yard>

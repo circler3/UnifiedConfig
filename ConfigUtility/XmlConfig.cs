@@ -10,18 +10,18 @@ namespace ConfigUtilty
 {
     internal class XmlConfig : ConfigBase
     {
-        protected XDocument _root;
+        protected XDocument _xDoc;
 
         public XmlConfig(string filepath, XDocument content)
             :base(filepath)
         {
-            _root = content;
+            _xDoc = content;
         }
 
         public override void Save(string filePath = null)
         {
             FileStream fs = new FileStream(filePath ?? _sourceFilePath, FileMode.Create);
-            _root.Save(fs, SaveOptions.None);
+            _xDoc.Save(fs, SaveOptions.None);
         }
 
         public override string GetValue(params string[] keys)
@@ -43,7 +43,7 @@ namespace ConfigUtilty
         {
             get
             {
-                return LocateXPath(xPath).Value;
+                return LocateXPath(xPath).Value.Trim();
             }
             set
             {
@@ -60,16 +60,16 @@ namespace ConfigUtilty
         /// <returns>选中的单一element</returns>
         public XElement LocateXPath(string xPath)
         {
-            return _root.XPathSelectElement(xPath);
+            return _xDoc.XPathSelectElement(xPath);
         }
 
         private XElement LocateElement(params string[] keys)
         {
-            if (_root == null)
+            if (_xDoc == null)
             {
                 return null;
             }
-            XElement element = _root.Root;
+            XElement element = _xDoc.Root;
             for (int i = 0; i < keys.Length; i++)
             {
                 element = element.Element(keys[i]);
