@@ -1,6 +1,9 @@
 # UnifiedConfig
 A common C# class to manipulate xml and ini files. 
 
+[![Version](https://img.shields.io/nuget/v/UnifiedConfig.svg)](https://www.nuget.org/packages/UnifiedConfig)
+[![Downloads](https://img.shields.io/nuget/dt/UnifiedConfig.svg)](https://www.nuget.org/packages/UnifiedConfig)
+
 ## Features
 * Wrapped the difference between xml and ini, you can access the config file without the consideration of format.
 * Provide XPath as default locating method.
@@ -22,5 +25,9 @@ Assert.Equal("5", config[@"//Default/Interval"]);
 
 Issues and PRs are welcomed.
 
-[ ] Support for some other formats  
-[X] Nuget package
+- [ ] Support for json
+- [X] Nuget package
+
+## Update Notes
+
+UPDATE 2017/07/18: Nuget package supported.
