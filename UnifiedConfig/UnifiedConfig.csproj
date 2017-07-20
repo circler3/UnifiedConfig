@@ -3,11 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <Authors>circler3</Authors>
-    <Description>Common utility for both xml and ini files</Description>
+    <Description>Common utility for config files(xml,ini,json currently supported) with unified interface.
+It uses xpath as the prefered lookup method.
+Access your data by config["/Default/Interval"] or Get/SetValue method. Detailed information can be found in the project site.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>This release added support for json.</PackageReleaseNotes>
+    <PackageReleaseNotes>This release repairs the error of setvalue/getvalue method</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) circler3.</Copyright>
-    <PackageTags>config configuration utility xml ini</PackageTags>
+    <PackageTags>config configuration utility xml ini json</PackageTags>
     <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/circler3/UnifiedConfig</PackageProjectUrl>
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
+[assembly: CLSCompliant(true)]
 namespace UnifiedConfig
 {
     /// <summary>
@@ -34,8 +36,36 @@ namespace UnifiedConfig
             }
             else
             {
-                throw new InvalidOperationException("Unexpected file type!");
+                //use reflection to enumerate the config classes.
+                config = TypeInference(filePath);
             }
+            if (config == null)
+                throw new InvalidOperationException("Unexpected file type!");
+        }
+
+        private ConfigBase TypeInference(string filePath)
+        {
+            ConfigBase con = null;
+            var asm = typeof(ConfigManager).GetTypeInfo().Assembly;
+            foreach (var item in asm.DefinedTypes)
+            {
+                if (item.BaseType == typeof(XmlConfig))
+                {
+                    foreach (var cons in item.DeclaredConstructors)
+                    {
+                        try
+                        {
+                            con = cons.Invoke(new object[] { filePath }) as XmlConfig;
+                            break;
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+            return con;
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace UnifiedConfig
 {
-    internal static class ConfigDataExtensions
+    internal static class IniDataExtensions
     {
 
         public static string ToIni(this XDocument model)

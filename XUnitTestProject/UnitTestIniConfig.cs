@@ -69,5 +69,27 @@ Interval = 5
             Assert.Equal("Lucas", config[@"/person[@id='1']/name"]);
             Assert.Equal("Lucas", config.GetValue("person[@id='1']", "name"));
         }
+
+        [Fact(DisplayName = "relection test")]
+        public void Test4()
+        {
+            string str = @";距离单位为m，时间单位为ms
+[Dynamic]
+Interval = 5
+Delay = 4000
+
+[Default]
+Interval = 5
+";
+            System.IO.File.WriteAllText("test", str);
+            ConfigManager config = new ConfigManager("test");
+            Assert.Equal("5", config[@"/Default/Interval"]);
+            config[@"//Default/Interval"] = "6";
+            Assert.Equal("6", config[@"//Default/Interval"]);
+            config.Save();
+            config = new ConfigManager("test");
+            Assert.Equal("6", config[@"//Default/Interval"]);
+            Assert.Equal("6", config.GetValue("Default", "Interval"));
+        }
     }
 }

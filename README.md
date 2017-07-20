@@ -27,9 +27,11 @@ Issues and PRs are welcomed.
 
 - [X] Support for json
 - [X] Nuget package
-- [ ] Auto-determine the type of config file without extension detection
+- [X] Auto-inference the type of config file without extension detection
+- [ ] Use **Property** rather than GetValue/SetValue method
 
 ## Update Notes
 
-UPDATE 2017/07/20: Add json support
+UPDATE 2017/07/20: Add json support.
+
 UPDATE 2017/07/18: Nuget package supported.
