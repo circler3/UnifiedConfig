@@ -69,7 +69,7 @@ namespace UnifiedConfig
                         int index = cline.IndexOf('=');
                         if (index < 1)
                         {
-                            throw new Exception("Property does not contains '=' operator");
+                            throw new InvalidOperationException("Property does not contains '=' operator");
                         }
                         node.Add(new XElement(cline.Substring(0, index).Trim(), cline.Substring(index + 1)));
                         break;

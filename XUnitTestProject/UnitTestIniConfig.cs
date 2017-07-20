@@ -6,7 +6,7 @@ namespace XUnitTestProject
 {
     public class UnitTestIniConfig
     {
-        [Fact]
+        [Fact(DisplayName = "ini test")]
         public void Test1()
         {
             string str = @";距离单位为m，时间单位为ms
@@ -25,9 +25,10 @@ Interval = 5
             config.Save();
             config = new ConfigManager("test.ini");
             Assert.Equal("6", config[@"//Default/Interval"]);
+            Assert.Equal("6", config.GetValue("Default", "Interval"));
         }
 
-        [Fact]
+        [Fact(DisplayName ="xml test")]
         public void Test2()
         {
             ConfigManager config = new ConfigManager("yard.xml");
@@ -37,9 +38,10 @@ Interval = 5
             config.Save();
             config = new ConfigManager("yard.xml");
             Assert.Equal("6", config[@"Yard/Section[@ID='1']/Block/MaxHeight"]);
+            Assert.Equal("6", config.GetValue("Yard", "Section[@ID = '1']", "Block", "MaxHeight"));
 
         }
-        [Fact]
+        [Fact(DisplayName = "json test")]
         public void Test3()
         {
             string json = @"{
@@ -65,6 +67,7 @@ Interval = 5
             config.Save();
             config = new ConfigManager("test.json");
             Assert.Equal("Lucas", config[@"/person[@id='1']/name"]);
+            Assert.Equal("Lucas", config.GetValue("person[@id='1']", "name"));
         }
     }
 }

@@ -23,6 +23,16 @@ namespace UnifiedConfig
             File.WriteAllText(filepath ?? _sourceFilePath, _xDoc.ToIni());
         }
 
+        public override string GetValue(params string[] keys)
+        {
+            return base.GetValue(this.AddRoot(keys));
+        }
+
+        public override bool SetValue(string value, params string[] keys)
+        {
+            return base.SetValue(value, this.AddRoot(keys));
+        }
+
         public override string this[string xPath]
         {
             get => base[Decorate(xPath)];
@@ -35,7 +45,7 @@ namespace UnifiedConfig
         /// <returns></returns>
         private string Decorate(string xPath)
         {
-            if (xPath.StartsWith("/")) xPath = "/" + base._xDoc.Root.Name.LocalName + xPath;
+            if (xPath.StartsWith("/")) xPath = "/" + _xDoc.Root.Name.LocalName + xPath;
             return xPath;
         }
     }

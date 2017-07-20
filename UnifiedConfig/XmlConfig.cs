@@ -10,7 +10,7 @@ namespace UnifiedConfig
 {
     internal class XmlConfig : ConfigBase
     {
-        protected XDocument _xDoc;
+        internal protected XDocument _xDoc;
 
         public XmlConfig(string filepath, XDocument content)
             :base(filepath)
@@ -26,14 +26,14 @@ namespace UnifiedConfig
 
         public override string GetValue(params string[] keys)
         {
-            var element = LocateElement(keys);
+            var element = LocateElementXPath(keys);
             if (element == null) return "";
             return element.Value;
         }
 
         public override bool SetValue(string value, params string[] keys)
         {
-            var element = LocateElement(keys);
+            var element = LocateElementXPath(keys);
             if (element == null) return false;
             element.Value = value;
             return true;
@@ -62,7 +62,7 @@ namespace UnifiedConfig
         {
             return _xDoc.XPathSelectElement(xPath);
         }
-
+        [Obsolete]
         private XElement LocateElement(params string[] keys)
         {
             if (_xDoc == null)
@@ -75,6 +75,17 @@ namespace UnifiedConfig
                 element = element.Element(keys[i]);
             }
             return element;
+        }
+
+        private XElement LocateElementXPath(params string[] keys)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var n in keys)
+            {
+                sb.Append("/");
+                sb.Append(n);
+            }
+            return LocateXPath(sb.ToString());
         }
     }
 }

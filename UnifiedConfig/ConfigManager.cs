@@ -40,11 +40,9 @@ namespace UnifiedConfig
 
         /// <summary>
         /// <para>Get or set node value by XPath</para>   
-        /// </summary>
-        /// <example>
         /// <para>e.g. "/config/general/interval" : Starting from root, find the node value of interval node inside general node in config node</para>
         /// <para>    "//config/tick[@type='origin']" : Starting from anywhere, find the value of the tick node which have a type attribute valued origin in config node</para>
-        /// </example>
+        /// </summary>
         /// <param name="xPath"></param>
         /// <returns></returns>
         public string this[string xPath]

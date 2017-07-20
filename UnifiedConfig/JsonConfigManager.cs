@@ -25,17 +25,22 @@ namespace UnifiedConfig
             File.WriteAllText(filepath ?? _sourceFilePath, ToXmlWithoutRoot());
         }
 
-        public override string this[string xPath]
+        public override string GetValue(params string[] keys)
         {
-            get => base[Decorate(xPath)];
-            set => base[Decorate(xPath)] = value;
+            return base.GetValue(this.AddRoot(keys));
         }
 
-        private string Decorate(string xPath)
+        public override bool SetValue(string value, params string[] keys)
         {
-            if (xPath.StartsWith("/")) xPath = "/" + base._xDoc.Root.Name.LocalName + xPath;
-            return xPath;
+            return base.SetValue(value, this.AddRoot(keys));
         }
+
+        public override string this[string xPath]
+        {
+            get => base[this.AddRoot(xPath)];
+            set => base[this.AddRoot(xPath)] = value;
+        }
+
         /// <summary>
         /// Single root element (not a array) is not a must for json. Hence a decorator is necessary.
         /// </summary>

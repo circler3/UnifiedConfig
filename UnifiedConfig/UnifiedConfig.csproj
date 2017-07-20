@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <PackageId>UnifiedConfig</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
     <Authors>circler3</Authors>
     <Description>Common utility for both xml and ini files</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,9 +13,10 @@
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
     <AssemblyName>UnifiedConfig</AssemblyName>
     <RootNamespace>UnifiedConfig</RootNamespace>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.1</Version>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -9,7 +9,7 @@ A common C# class to manipulate xml and ini files.
 * Provide XPath as default locating method.
 * Saving file will not change the original format.
 
-## Usage:
+## Usage
 1. compile the class library and add reference of the dlls including the "UnifiedConfig.dll" to your project.
 2. add using statement to your namespaces.
 3. you can call the functions by using the following code or just read the test class.
@@ -31,4 +31,5 @@ Issues and PRs are welcomed.
 
 ## Update Notes
 
+UPDATE 2017/07/20: Add json support
 UPDATE 2017/07/18: Nuget package supported.
