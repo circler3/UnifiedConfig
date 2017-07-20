@@ -7,7 +7,7 @@
     <Authors>circler3</Authors>
     <Description>Common utility for both xml and ini files</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <PackageReleaseNotes>This release added support for json.</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) circler3.</Copyright>
     <PackageTags>config configuration utility xml ini</PackageTags>
     <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
@@ -15,13 +15,21 @@
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
     <AssemblyName>UnifiedConfig</AssemblyName>
     <RootNamespace>UnifiedConfig</RootNamespace>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard1.3\UnifiedConfig.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.3\UnifiedConfig.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>

@@ -8,6 +8,7 @@ namespace UnifiedConfig
 {
     internal static class ConfigDataExtensions
     {
+
         public static string ToIni(this XDocument model)
         {
             StringBuilder sb = new StringBuilder();

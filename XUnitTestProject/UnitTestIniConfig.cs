@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using UnifiedConfig;
-
+using Newtonsoft.Json;
 namespace XUnitTestProject
 {
     public class UnitTestIniConfig
@@ -19,7 +19,7 @@ Interval = 5
 ";
             System.IO.File.WriteAllText("test.ini", str);
             ConfigManager config = new ConfigManager("test.ini");
-            Assert.Equal("5", config[@"//Default/Interval"]);
+            Assert.Equal("5", config[@"/Default/Interval"]);
             config[@"//Default/Interval"] = "6";
             Assert.Equal("6", config[@"//Default/Interval"]);
             config.Save();
@@ -38,6 +38,33 @@ Interval = 5
             config = new ConfigManager("yard.xml");
             Assert.Equal("6", config[@"Yard/Section[@ID='1']/Block/MaxHeight"]);
 
+        }
+        [Fact]
+        public void Test3()
+        {
+            string json = @"{
+ 'person': [
+     {
+       '@id': '1',
+       'name': 'Alan',
+       'url': 'http://www.google.com'
+     },
+     {
+       '@id': '2',
+       'name': 'Louis',
+       'url': 'http://www.yahoo.com'
+     }
+   ]
+ }
+";
+            System.IO.File.WriteAllText("test.json", json);
+            ConfigManager config = new ConfigManager("test.json");
+            Assert.Equal("Alan", config[@"//person[@id='1']/name"]);
+            config[@"//person[@id='1']/name"] = "Lucas";
+            Assert.Equal("Lucas", config[@"//person[@id='1']/name"]);
+            config.Save();
+            config = new ConfigManager("test.json");
+            Assert.Equal("Lucas", config[@"/person[@id='1']/name"]);
         }
     }
 }

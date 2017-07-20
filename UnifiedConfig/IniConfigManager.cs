@@ -28,7 +28,11 @@ namespace UnifiedConfig
             get => base[Decorate(xPath)];
             set => base[Decorate(xPath)] = value;
         }
-
+        /// <summary>
+        /// Ini file does not contains an root element. Hence a decorator is necessary.
+        /// </summary>
+        /// <param name="xPath"></param>
+        /// <returns></returns>
         private string Decorate(string xPath)
         {
             if (xPath.StartsWith("/")) xPath = "/" + base._xDoc.Root.Name.LocalName + xPath;

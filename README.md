@@ -25,8 +25,9 @@ Assert.Equal("5", config[@"//Default/Interval"]);
 
 Issues and PRs are welcomed.
 
-- [ ] Support for json
+- [X] Support for json
 - [X] Nuget package
+- [ ] Auto-determine the type of config file without extension detection
 
 ## Update Notes
 
