@@ -28,7 +28,8 @@ Issues and PRs are welcomed.
 - [X] Support for json
 - [X] Nuget package
 - [X] Auto-inference the type of config file without extension detection
-- [ ] Use **Property** rather than GetValue/SetValue method
+- [ ] Support for int indexer
+- [X] Support returning more types other than string (via ToObject<T> method)
 
 ## Update Notes
 

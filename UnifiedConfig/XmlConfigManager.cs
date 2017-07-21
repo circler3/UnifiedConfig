@@ -20,7 +20,7 @@ namespace UnifiedConfig
 
         public override void Save(string filepath = null)
         {
-            File.WriteAllText(filepath ?? _sourceFilePath, _xDoc.ToString());
+            File.WriteAllText(filepath ?? sourceFilePath, xDoc.ToString());
         }
     }
 }

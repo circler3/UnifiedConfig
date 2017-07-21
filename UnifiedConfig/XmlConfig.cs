@@ -10,18 +10,18 @@ namespace UnifiedConfig
 {
     internal class XmlConfig : ConfigBase
     {
-        internal protected XDocument _xDoc;
+        internal protected XDocument xDoc;
 
         public XmlConfig(string filepath, XDocument content)
             :base(filepath)
         {
-            _xDoc = content;
+            xDoc = content;
         }
 
         public override void Save(string filePath = null)
         {
-            FileStream fs = new FileStream(filePath ?? _sourceFilePath, FileMode.Create);
-            _xDoc.Save(fs, SaveOptions.None);
+            FileStream fs = new FileStream(filePath ?? sourceFilePath, FileMode.Create);
+            xDoc.Save(fs, SaveOptions.None);
         }
 
         public override string GetValue(params string[] keys)
@@ -60,16 +60,16 @@ namespace UnifiedConfig
         /// <returns>选中的单一element</returns>
         public XElement LocateXPath(string xPath)
         {
-            return _xDoc.XPathSelectElement(xPath);
+            return xDoc.XPathSelectElement(xPath);
         }
         [Obsolete]
         private XElement LocateElement(params string[] keys)
         {
-            if (_xDoc == null)
+            if (xDoc == null)
             {
                 return null;
             }
-            XElement element = _xDoc.Root;
+            XElement element = xDoc.Root;
             for (int i = 0; i < keys.Length; i++)
             {
                 element = element.Element(keys[i]);

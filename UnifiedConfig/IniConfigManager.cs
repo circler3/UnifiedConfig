@@ -20,7 +20,7 @@ namespace UnifiedConfig
 
         public override void Save(string filepath = null)
         {
-            File.WriteAllText(filepath ?? _sourceFilePath, _xDoc.ToIni());
+            File.WriteAllText(filepath ?? sourceFilePath, xDoc.ToIni());
         }
 
         public override string GetValue(params string[] keys)
@@ -45,7 +45,7 @@ namespace UnifiedConfig
         /// <returns></returns>
         private string Decorate(string xPath)
         {
-            if (xPath.StartsWith("/")) xPath = "/" + _xDoc.Root.Name.LocalName + xPath;
+            if (xPath.StartsWith("/")) xPath = "/" + xDoc.Root.Name.LocalName + xPath;
             return xPath;
         }
     }

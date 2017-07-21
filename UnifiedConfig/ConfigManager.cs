@@ -42,6 +42,14 @@ namespace UnifiedConfig
             if (config == null)
                 throw new InvalidOperationException("Unexpected file type!");
         }
+        /// <summary>
+        /// Get a config manager class with the provided configbase.
+        /// </summary>
+        /// <param name="configBase"></param>
+        public ConfigManager(ConfigBase configBase)
+        {
+            config = configBase;
+        }
 
         private ConfigBase TypeInference(string filePath)
         {

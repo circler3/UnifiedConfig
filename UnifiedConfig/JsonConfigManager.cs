@@ -22,7 +22,7 @@ namespace UnifiedConfig
 
         public override void Save(string filepath = null)
         {
-            File.WriteAllText(filepath ?? _sourceFilePath, ToXmlWithoutRoot());
+            File.WriteAllText(filepath ?? sourceFilePath, ToXmlWithoutRoot());
         }
 
         public override string GetValue(params string[] keys)
@@ -53,7 +53,7 @@ namespace UnifiedConfig
 
         private string ToXmlWithoutRoot()
         {
-            JObject result = JObject.FromObject(_xDoc.Root);
+            JObject result = JObject.FromObject(xDoc.Root);
             var dest = result.Root.Children().First().Children().First();
             return dest.ToString();
         }

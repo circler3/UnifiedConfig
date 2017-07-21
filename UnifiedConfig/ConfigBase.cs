@@ -16,12 +16,12 @@ namespace UnifiedConfig
         /// <param name="filePath"></param>
         public ConfigBase(string filePath)
         {
-            _sourceFilePath = filePath;
+            sourceFilePath = filePath;
         }
         /// <summary>
         /// Original config source file
         /// </summary>
-        protected string _sourceFilePath;
+        protected string sourceFilePath;
         /// <summary>
         /// Get the string value of the path
         /// <para>e.g. GetValue("config","master")</para>
@@ -48,6 +48,5 @@ namespace UnifiedConfig
         /// <param name="findingPath"></param>
         /// <returns></returns>
         public abstract string this[string findingPath] { get; set; }
-
     }
 }
