@@ -89,7 +89,8 @@ Interval = 5
             config.Save();
             config = new ConfigManager("test");
             Assert.Equal("6", config[@"//Default/Interval"]);
-            Assert.Equal("6", config.GetValue("Default", "Interval"));
+            int z = config[@"//Default/Interval"].ToObject<int>();
+            Assert.Equal(z.ToString(), config.GetValue("Default", "Interval"));
         }
     }
 }
