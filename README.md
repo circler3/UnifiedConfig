@@ -34,9 +34,10 @@ Issues and PRs are welcomed.
 - [X] Auto-inference the type of config file without extension detection
 - [ ] Support for int indexer
 - [X] Support returning more types other than string (via ToObject<T> method)
+- [ ] Support of IEnumerable for sophisticated query
 
 ## Update Notes
-UPDATA 2017/07/22: Add Auto-inference and more types.
+UPDATA 2017/07/22: Add Auto-inference and type conversion.
 
 UPDATE 2017/07/20: Add json support.
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace UnifiedConfig
 
         public override void Save(string filePath = null)
         {
+            if (sourceFilePath == null) return;
             FileStream fs = new FileStream(filePath ?? sourceFilePath, FileMode.Create);
             xDoc.Save(fs, SaveOptions.None);
         }
@@ -43,11 +45,36 @@ namespace UnifiedConfig
         {
             get
             {
-                return LocateXPath(xPath).Value.Trim();
+                var result = (xDoc.XPathEvaluate(xPath) as IEnumerable).Cast<XObject>().FirstOrDefault();
+                switch( result.NodeType)
+                {
+                    case System.Xml.XmlNodeType.Attribute:
+                        return ((XAttribute)result).Value.Trim();
+                    case System.Xml.XmlNodeType.Element:
+                        return ((XElement)result).Value.Trim();
+                }
+                return null;
             }
             set
             {
-                LocateXPath(xPath).Value = value;
+                var result = (xDoc.XPathEvaluate(xPath) as IEnumerable).Cast<XObject>().FirstOrDefault();
+                switch (result.NodeType)
+                {
+                    case System.Xml.XmlNodeType.Attribute:
+                        ((XAttribute)result).Value = value;
+                        break;
+                    case System.Xml.XmlNodeType.Element:
+                        ((XElement)result).Value = value;
+                        break;
+                }
+            }
+        }
+
+        public IEnumerable<XmlConfig> Elements(string xPath)
+        {
+            foreach(var n in xDoc.XPathSelectElements(xPath))
+            {
+                yield return new XmlConfig(null, new XDocument(n));
             }
         }
 
@@ -61,20 +88,6 @@ namespace UnifiedConfig
         public XElement LocateXPath(string xPath)
         {
             return xDoc.XPathSelectElement(xPath);
-        }
-        [Obsolete]
-        private XElement LocateElement(params string[] keys)
-        {
-            if (xDoc == null)
-            {
-                return null;
-            }
-            XElement element = xDoc.Root;
-            for (int i = 0; i < keys.Length; i++)
-            {
-                element = element.Element(keys[i]);
-            }
-            return element;
         }
 
         private XElement LocateElementXPath(params string[] keys)

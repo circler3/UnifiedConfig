@@ -7,7 +7,7 @@
 It uses xpath as the prefered lookup method.
 Access your data by config["/Default/Interval"] or Get/SetValue method. Detailed information can be found in the project site.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>This release repairs the error of setvalue/getvalue method</PackageReleaseNotes>
+    <PackageReleaseNotes>This release adds support for auto-inference of config file types</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) circler3.</Copyright>
     <PackageTags>config configuration utility xml ini json</PackageTags>
     <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
@@ -15,9 +15,9 @@ Access your data by config["/Default/Interval"] or Get/SetValue method. Detailed
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
     <AssemblyName>UnifiedConfig</AssemblyName>
     <RootNamespace>UnifiedConfig</RootNamespace>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
-    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.2</Version>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 

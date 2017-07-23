@@ -16,7 +16,7 @@ namespace UnifiedConfig
         /// <param name="str">self</param>
         /// <returns>value in type T</returns>
         [CLSCompliant(false)]
-        public static T ToObject<T>(this string str) where T : IConvertible
+        public static T ToObject<T>(this object str) where T : IConvertible
         {
             return (T)Convert.ChangeType(str, typeof(T));
         }
