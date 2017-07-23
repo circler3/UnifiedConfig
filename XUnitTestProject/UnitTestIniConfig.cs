@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using UnifiedConfig;
 using Newtonsoft.Json;
+using System.Linq;
 namespace XUnitTestProject
 {
     public class UnitTestIniConfig
@@ -39,8 +40,9 @@ Interval = 5
             config = new ConfigManager("yard.xml");
             Assert.Equal("6", config[@"Yard/Section[@ID='1']/Block/MaxHeight"]);
             Assert.Equal("6", config.GetValue("Yard", "Section[@ID = '1']", "Block", "MaxHeight"));
-            Assert.Equal("35", config[@"Yard/Section[@ID='1']/Block/Border/Point[@X='100']/@Y"]);
-
+            Assert.Equal("35", config[@"Yard/Section[@ID='1']/Block/Border/Point[1]/@Y"]);
+            Assert.Equal(2, config.Elements(@"Yard/Section").Count());
+            Assert.Equal("35", config.Elements(@"Yard/Section").First()["/child::node()/Block/Border/Point[1]/@Y"]);
         }
         [Fact(DisplayName = "json test")]
         public void Test3()

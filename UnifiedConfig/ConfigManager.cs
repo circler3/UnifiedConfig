@@ -12,7 +12,7 @@ namespace UnifiedConfig
     /// </summary>
     public class ConfigManager
     {
-        private ConfigBase config;
+        private XmlConfig config;
 
         /// <summary>
         /// Loads main configuration file. The filename extension must have be supported.
@@ -46,14 +46,14 @@ namespace UnifiedConfig
         /// Get a config manager class with the provided configbase.
         /// </summary>
         /// <param name="configBase"></param>
-        public ConfigManager(ConfigBase configBase)
+        public ConfigManager(XmlConfig configBase)
         {
             config = configBase;
         }
 
-        private ConfigBase TypeInference(string filePath)
+        private XmlConfig TypeInference(string filePath)
         {
-            ConfigBase con = null;
+            XmlConfig con = null;
             var asm = typeof(ConfigManager).GetTypeInfo().Assembly;
             foreach (var item in asm.DefinedTypes)
             {
@@ -122,6 +122,11 @@ namespace UnifiedConfig
         public bool SetValue(string value, params string[] keys)
         {
             return config.SetValue(value, keys);
+        }
+
+        public IEnumerable<XmlConfig> Elements(string xPath)
+        {
+            return config.Elements(xPath);
         }
     }
 }

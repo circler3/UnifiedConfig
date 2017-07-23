@@ -9,11 +9,11 @@ using System.Xml.XPath;
 
 namespace UnifiedConfig
 {
-    internal class XmlConfig : ConfigBase
+    public class XmlConfig : ConfigBase
     {
-        internal protected XDocument xDoc;
+        internal XDocument xDoc;
 
-        public XmlConfig(string filepath, XDocument content)
+        internal XmlConfig(string filepath, XDocument content)
             :base(filepath)
         {
             xDoc = content;
@@ -85,7 +85,7 @@ namespace UnifiedConfig
         /// </summary>
         /// <param name="xPath">XPath语句</param>
         /// <returns>选中的单一element</returns>
-        public XElement LocateXPath(string xPath)
+        private XElement LocateXPath(string xPath)
         {
             return xDoc.XPathSelectElement(xPath);
         }
