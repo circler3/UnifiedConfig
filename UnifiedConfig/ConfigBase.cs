@@ -9,7 +9,7 @@ namespace UnifiedConfig
     /// <summary>
     /// Abstract base of config class
     /// </summary>
-    public abstract class ConfigBase
+    public abstract class ConfigBase : IConfig
     {
         /// <summary>
         /// Constructor which set the orginal config filename.
@@ -23,6 +23,12 @@ namespace UnifiedConfig
         /// Original config source file
         /// </summary>
         protected string sourceFilePath;
+        /// <summary>
+        /// Get or set the value by findingPath.
+        /// </summary>
+        /// <param name="findingPath"></param>
+        /// <returns></returns>
+        public abstract string this[string findingPath] { get; set; }
         /// <summary>
         /// Get the string value of the path
         /// <para>e.g. GetValue("config","master")</para>
@@ -43,11 +49,5 @@ namespace UnifiedConfig
         /// </summary>
         /// <param name="filepath">full file path. The file path where the config is used as default.</param>
         public abstract void Save(string filepath = null);
-        /// <summary>
-        /// Get or set the value by findingPath.
-        /// </summary>
-        /// <param name="findingPath"></param>
-        /// <returns></returns>
-        public abstract string this[string findingPath] { get; set; }
     }
 }

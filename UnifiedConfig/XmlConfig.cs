@@ -9,6 +9,9 @@ using System.Xml.XPath;
 
 namespace UnifiedConfig
 {
+    /// <summary>
+    /// Represent the xml-typed data of a config file
+    /// </summary>
     public class XmlConfig : ConfigBase
     {
         internal XDocument xDoc;
@@ -18,29 +21,45 @@ namespace UnifiedConfig
         {
             xDoc = content;
         }
-
+        /// <summary>
+        /// Writing config file in xml format
+        /// </summary>
+        /// <param name="filePath"></param>
         public override void Save(string filePath = null)
         {
             if (sourceFilePath == null) return;
             FileStream fs = new FileStream(filePath ?? sourceFilePath, FileMode.Create);
             xDoc.Save(fs, SaveOptions.None);
         }
-
+        /// <summary>
+        /// Get the string value of the path
+        /// <para>e.g. GetValue("config","master")</para>
+        /// </summary>
+        /// <param name="keys">path strings</param>
+        /// <returns>string value result</returns>
         public override string GetValue(params string[] keys)
         {
-            var element = LocateElementXPath(keys);
-            if (element == null) return "";
-            return element.Value;
+            return LocateElementXPath(keys);
         }
-
+        /// <summary>
+        /// Set the value by path
+        /// <para>e.g. SetValue("True","config","master")</para>
+        /// </summary>
+        /// <param name="value">value</param>
+        /// <param name="keys">path strings</param>
+        /// <returns>result of the operation</returns>
         public override bool SetValue(string value, params string[] keys)
         {
             var element = LocateElementXPath(keys);
             if (element == null) return false;
-            element.Value = value;
+            element = value;
             return true;
         }
-
+        /// <summary>
+        /// Return the string value of a element value of an atrribute value.
+        /// </summary>
+        /// <param name="xPath">xPath string</param>
+        /// <returns>string result of value</returns>
         public override string this[string xPath]
         {
             get
@@ -69,7 +88,11 @@ namespace UnifiedConfig
                 }
             }
         }
-
+        /// <summary>
+        /// Return elements of the xPath result
+        /// </summary>
+        /// <param name="xPath">xPath string</param>
+        /// <returns>xmlconfigs</returns>
         public IEnumerable<XmlConfig> Elements(string xPath)
         {
             foreach(var n in xDoc.XPathSelectElements(xPath))
@@ -90,7 +113,7 @@ namespace UnifiedConfig
             return xDoc.XPathSelectElement(xPath);
         }
 
-        private XElement LocateElementXPath(params string[] keys)
+        private string LocateElementXPath(params string[] keys)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var n in keys)
@@ -98,7 +121,7 @@ namespace UnifiedConfig
                 sb.Append("/");
                 sb.Append(n);
             }
-            return LocateXPath(sb.ToString());
+            return this[sb.ToString()];
         }
     }
 }

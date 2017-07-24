@@ -10,7 +10,7 @@ namespace UnifiedConfig
     /// <summary>
     /// Initialize the config which represents a single file.
     /// </summary>
-    public class ConfigManager
+    public class ConfigManager : IConfig
     {
         private XmlConfig config;
 
@@ -45,10 +45,10 @@ namespace UnifiedConfig
         /// <summary>
         /// Get a config manager class with the provided configbase.
         /// </summary>
-        /// <param name="configBase"></param>
-        public ConfigManager(XmlConfig configBase)
+        /// <param name="xmlconfig"></param>
+        public ConfigManager(XmlConfig xmlconfig)
         {
-            config = configBase;
+            config = xmlconfig;
         }
 
         private XmlConfig TypeInference(string filePath)
@@ -123,7 +123,11 @@ namespace UnifiedConfig
         {
             return config.SetValue(value, keys);
         }
-
+        /// <summary>
+        /// Get elements of the xPath query 
+        /// </summary>
+        /// <param name="xPath">xPath</param>
+        /// <returns>xmlconfigs which expose the same interface</returns>
         public IEnumerable<XmlConfig> Elements(string xPath)
         {
             return config.Elements(xPath);
