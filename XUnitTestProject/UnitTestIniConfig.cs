@@ -32,9 +32,9 @@ Interval = 5
         [Fact(DisplayName ="xml test")]
         public void Test2()
         {
-            ConfigManager config = new ConfigManager("yard.xml");
+            ConfigManager config = new ConfigManager("yard.xml", "yard");
             Assert.Equal("200", config[@"Yard/Section[@ID='1']/Block/MaxHeight"]);
-            config[@"//Section[@ID='1']/Block/MaxHeight"] = "6";
+            config[@"/*/Section[@ID='1']/Block/MaxHeight"] = "6";
             Assert.Equal("6", config[@"Yard/Section[@ID='1']/Block/MaxHeight"]);
             config.Save();
             config = new ConfigManager("yard.xml");

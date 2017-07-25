@@ -93,7 +93,7 @@ namespace UnifiedConfig
         /// </summary>
         /// <param name="xPath">xPath string</param>
         /// <returns>xmlconfigs</returns>
-        public IEnumerable<XmlConfig> Elements(string xPath)
+        public virtual IEnumerable<XmlConfig> Elements(string xPath)
         {
             foreach(var n in xDoc.XPathSelectElements(xPath))
             {

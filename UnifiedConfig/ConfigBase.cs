@@ -23,6 +23,7 @@ namespace UnifiedConfig
         /// Original config source file
         /// </summary>
         protected string sourceFilePath;
+
         /// <summary>
         /// Get or set the value by findingPath.
         /// </summary>

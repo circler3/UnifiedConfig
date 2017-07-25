@@ -13,9 +13,23 @@ namespace UnifiedConfig
     public class ConfigManager : IConfig
     {
         private XmlConfig config;
-
+        /// <summary>
+        /// The config name of the config manager. 
+        /// </summary>
+        public string Name { get; set; }
         /// <summary>
         /// Loads main configuration file. The filename extension must have be supported.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Throw when file type is not supported</exception>
+        /// <param name="filePath">File path with the extension.</param>
+        /// <param name="configName">the config name</param>
+        public ConfigManager(string filePath, string configName)
+            : this(filePath)
+        {
+            Name = configName;
+        }
+        /// <summary>
+        /// Loads main configuration file. Default config name is the filename.
         /// </summary>
         /// <exception cref="InvalidOperationException">Throw when file type is not supported</exception>
         /// <param name="filePath">File path with the extension.</param>
@@ -41,6 +55,7 @@ namespace UnifiedConfig
             }
             if (config == null)
                 throw new InvalidOperationException("Unexpected file type!");
+            Name = System.IO.Path.GetFileNameWithoutExtension(filePath);
         }
         /// <summary>
         /// Get a config manager class with the provided configbase.

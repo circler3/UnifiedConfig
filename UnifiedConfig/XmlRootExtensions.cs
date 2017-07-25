@@ -9,6 +9,7 @@ namespace UnifiedConfig
         internal static string AddRoot(this XmlConfig config, string xPath)
         {
             if (xPath.StartsWith("/")) xPath = "/" + config.xDoc.Root.Name.LocalName + xPath;
+            else xPath = "/" + config.xDoc.Root.Name.LocalName + "/" + xPath;
             return xPath;
         }
 

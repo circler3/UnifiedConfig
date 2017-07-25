@@ -41,6 +41,11 @@ namespace UnifiedConfig
             set => base[this.AddRoot(xPath)] = value;
         }
 
+        public override IEnumerable<XmlConfig> Elements(string xPath)
+        {
+            return base.Elements(this.AddRoot(xPath));
+        }
+
         /// <summary>
         /// Single root element (not a array) is not a must for json. Hence a decorator is necessary.
         /// </summary>

@@ -48,5 +48,10 @@ namespace UnifiedConfig
             if (xPath.StartsWith("/")) xPath = "/" + xDoc.Root.Name.LocalName + xPath;
             return xPath;
         }
+
+        public override IEnumerable<XmlConfig> Elements(string xPath)
+        {
+            return base.Elements(this.AddRoot(xPath));
+        }
     }
 }
