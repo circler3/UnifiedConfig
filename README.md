@@ -5,7 +5,7 @@ A common C# class to manipulate xml, ini and json config files.
 [![Downloads](https://img.shields.io/nuget/dt/UnifiedConfig.svg)](https://www.nuget.org/packages/UnifiedConfig)
 
 ## Features
-* Wrapped the difference between xml and ini, you can access the config file without the consideration of format.
+* Wrapped the difference among xml, ini and json, you can access the config file without the consideration of format.
 * Provide XPath as default locating method.
 * Saving file will not change the original format.
 
@@ -32,11 +32,14 @@ Issues and PRs are welcomed.
 - [X] Support for json
 - [X] Nuget package
 - [X] Auto-inference the type of config file without extension detection
-- [ ] Support for int indexer
 - [X] Support returning more types other than string (via ToObject<T> method)
 - [X] Support of IEnumerable for sophisticated query
+- [ ] ~~Support for int indexer~~ is removed since the xpath supported already
+- [ ] *Ready to go* template project
 
 ## Update Notes
+UPDATE 2017/07/25: Add Name property and fix the IEnumerable bug.
+
 UPDATE 2017/07/24: Add IEnumerable support for sophisticated query.
 
 UPDATE 2017/07/22: Add Auto-inference and type conversion.
