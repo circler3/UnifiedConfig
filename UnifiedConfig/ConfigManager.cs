@@ -110,7 +110,7 @@ namespace UnifiedConfig
             }
         }
         /// <summary>
-        /// Get the string value of the path
+        /// Get the string value of the path.
         /// <para>e.g. GetValue("config","master")</para>
         /// </summary>
         /// <param name="keys">path strings</param>
@@ -118,6 +118,17 @@ namespace UnifiedConfig
         public string GetValue(params string[] keys)
         {
             return config.GetValue(keys);
+        }
+        /// <summary>
+        /// Get the string value of the XPath.
+        /// <para>e.g. GetValue("//config", fale)</para>
+        /// </summary>
+        /// <param name="xPath">XPath string</param>
+        /// <param name="ignoreCase">if true, the matching will ignore case.</param>
+        /// <returns>string value result</returns>
+        public string GetValue(string xPath , bool ignoreCase = false)
+        {
+            return config.GetValue(xPath, ignoreCase);
         }
         /// <summary>
         /// Save the config into file

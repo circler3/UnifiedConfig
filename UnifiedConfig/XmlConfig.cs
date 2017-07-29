@@ -15,6 +15,7 @@ namespace UnifiedConfig
     public class XmlConfig : ConfigBase
     {
         internal XDocument xDoc;
+        internal XDocument xDocLower;
 
         internal XmlConfig(string filepath, XDocument content)
             :base(filepath)
@@ -64,15 +65,7 @@ namespace UnifiedConfig
         {
             get
             {
-                var result = (xDoc.XPathEvaluate(xPath) as IEnumerable).Cast<XObject>().FirstOrDefault();
-                switch( result.NodeType)
-                {
-                    case System.Xml.XmlNodeType.Attribute:
-                        return ((XAttribute)result).Value.Trim();
-                    case System.Xml.XmlNodeType.Element:
-                        return ((XElement)result).Value.Trim();
-                }
-                return null;
+                return GetValue(xPath, false);
             }
             set
             {
@@ -98,6 +91,52 @@ namespace UnifiedConfig
             foreach(var n in xDoc.XPathSelectElements(xPath))
             {
                 yield return new XmlConfig(null, new XDocument(n));
+            }
+        }
+        /// <summary>
+        /// Get the string value of the XPath.
+        /// <para>e.g. GetValue("//config", fale)</para>
+        /// </summary>
+        /// <param name="xPath">XPath string</param>
+        /// <param name="isIgnoreCase">if true, the matching will ignore case.</param>
+        /// <returns>string value result</returns>
+        public virtual string GetValue(string xPath, bool isIgnoreCase = false)
+        {
+            XObject obj;
+            if (isIgnoreCase)
+            {
+                BuildLowerDoc();
+                obj = (xDocLower.XPathEvaluate(xPath.ToLower()) as IEnumerable).Cast<XObject>().FirstOrDefault();
+            }
+            else
+            {
+                obj = (xDoc.XPathEvaluate(xPath) as IEnumerable).Cast<XObject>().FirstOrDefault();
+            }
+            switch (obj.NodeType)
+            {
+                case System.Xml.XmlNodeType.Attribute:
+                    return ((XAttribute)obj).Value.Trim();
+                case System.Xml.XmlNodeType.Element:
+                    return ((XElement)obj).Value.Trim();
+            }
+            return null;
+        }
+
+        private void BuildLowerDoc()
+        {
+            if (xDocLower == null)
+            {
+                xDocLower = new XDocument(xDoc);
+                foreach (var n in xDocLower.Descendants())
+                {
+                    n.Name = n.Name.LocalName.ToLower();
+                    var list = n.Attributes().ToList();
+                    n.RemoveAttributes();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        n.Add(new XAttribute(list[i].Name.LocalName.ToLower(), list[i].Value));
+                    }
+                }
             }
         }
 

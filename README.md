@@ -1,5 +1,5 @@
 # UnifiedConfig
-A common C# class to manipulate xml, ini and json config files.
+A common C# class to manipulate xml, ini and json config files with unified interfaces.
 
 [![Version](https://img.shields.io/nuget/v/UnifiedConfig.svg)](https://www.nuget.org/packages/UnifiedConfig)
 [![Downloads](https://img.shields.io/nuget/dt/UnifiedConfig.svg)](https://www.nuget.org/packages/UnifiedConfig)
@@ -36,8 +36,11 @@ Issues and PRs are welcomed.
 - [X] Support of IEnumerable for sophisticated query
 - [ ] ~~Support for int indexer~~ is removed since the xpath supported already
 - [ ] *Ready to go* template project
+- [X] Case-sensitive swtich for path matching
 
 ## Update Notes
+UPDATE 2017/07/29: Add Case-sensitive swtich for path matching
+
 UPDATE 2017/07/25: Add Name property and fix the IEnumerable bug.
 
 UPDATE 2017/07/24: Add IEnumerable support for sophisticated query.

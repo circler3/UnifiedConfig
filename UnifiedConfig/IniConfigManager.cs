@@ -23,16 +23,6 @@ namespace UnifiedConfig
             File.WriteAllText(filepath ?? sourceFilePath, xDoc.ToIni());
         }
 
-        public override string GetValue(params string[] keys)
-        {
-            return base.GetValue(keys);
-        }
-
-        public override bool SetValue(string value, params string[] keys)
-        {
-            return base.SetValue(value, keys);
-        }
-
         public override string this[string xPath]
         {
             get => base[Decorate(xPath)];

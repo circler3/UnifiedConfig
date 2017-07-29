@@ -42,6 +42,7 @@ Interval = 5
             Assert.Equal("6", config.GetValue("Yard", "Section[@ID = '1']", "Block", "MaxHeight"));
             Assert.Equal("35", config[@"Yard/Section[@ID='1']/Block/Border/Point[1]/@Y"]);
             Assert.Equal(2, config.Elements(@"Yard/Section").Count());
+            Assert.Equal("6", config.GetValue("/*/section[@id='1']/block/maxHeight", true));
             Assert.Equal("35", config.Elements(@"Yard/Section").First()["/child::node()/Block/Border/Point[1]/@Y"]);
         }
         [Fact(DisplayName = "json test")]
