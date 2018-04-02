@@ -6,7 +6,7 @@
     <Description>Common utility for config files (xml,ini,json currently supported) with unified interface.
 It uses xpath as the prefered lookup method.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>This release adds case-sensitive swtich.</PackageReleaseNotes>
+    <PackageReleaseNotes>This release adds a FilePath property for user to get the config file</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) circler3.</Copyright>
     <PackageTags>unified config configuration utility xml ini json</PackageTags>
     <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
@@ -14,10 +14,10 @@ It uses xpath as the prefered lookup method.</Description>
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
     <AssemblyName>UnifiedConfig</AssemblyName>
     <RootNamespace>UnifiedConfig</RootNamespace>
-    <AssemblyVersion>1.1.5.0</AssemblyVersion>
-    <FileVersion>1.1.5.0</FileVersion>
-    <Version>1.1.5</Version>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <AssemblyVersion>1.1.6.0</AssemblyVersion>
+    <FileVersion>1.1.6.0</FileVersion>
+    <Version>1.1.6</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

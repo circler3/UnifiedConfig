@@ -18,6 +18,10 @@ namespace UnifiedConfig
         /// </summary>
         public string Name { get; set; }
         /// <summary>
+        /// The file path of the config file
+        /// </summary>
+        public string FilePath { get; private set; }
+        /// <summary>
         /// Loads main configuration file. The filename extension must have be supported.
         /// </summary>
         /// <exception cref="InvalidOperationException">Throw when file type is not supported</exception>
@@ -35,6 +39,7 @@ namespace UnifiedConfig
         /// <param name="filePath">File path with the extension.</param>
         public ConfigManager(string filePath)
         {
+            FilePath = filePath;
             string label = filePath.ToLower();
             if (label.EndsWith("xml"))
             {
@@ -126,7 +131,7 @@ namespace UnifiedConfig
         /// <param name="xPath">XPath string</param>
         /// <param name="ignoreCase">if true, the matching will ignore case.</param>
         /// <returns>string value result</returns>
-        public string GetValue(string xPath , bool ignoreCase = false)
+        public string GetValue(string xPath, bool ignoreCase = false)
         {
             return config.GetValue(xPath, ignoreCase);
         }
