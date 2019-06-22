@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
     <Authors>circler3</Authors>
     <Description>Common utility for config files (xml,ini,json currently supported) with unified interface.
 It uses xpath as the prefered lookup method.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>This release adds a FilePath property for user to get the config file</PackageReleaseNotes>
+    <PackageReleaseNotes>This release adds targeting to .net standard 2.0</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) circler3.</Copyright>
     <PackageTags>unified config configuration utility xml ini json</PackageTags>
-    <PackageLicenseUrl>https://github.com/circler3/UnifiedConfig/blob/master/License.txt</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/circler3/UnifiedConfig</PackageProjectUrl>
     <RepositoryUrl>https://github.com/circler3/UnifiedConfig.git</RepositoryUrl>
     <AssemblyName>UnifiedConfig</AssemblyName>
     <RootNamespace>UnifiedConfig</RootNamespace>
-    <AssemblyVersion>1.1.6.0</AssemblyVersion>
-    <FileVersion>1.1.6.0</FileVersion>
-    <Version>1.1.6</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Version>1.2.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -32,6 +33,13 @@ It uses xpath as the prefered lookup method.</Description>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
