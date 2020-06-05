@@ -94,7 +94,7 @@ namespace UnifiedConfig
             }
         }
         /// <summary>
-        /// Get the string value of the XPath.
+        /// Get the string value of the XPath. Note null will be returned if not found.
         /// <para>e.g. GetValue("//config", fale)</para>
         /// </summary>
         /// <param name="xPath">XPath string</param>
@@ -112,14 +112,28 @@ namespace UnifiedConfig
             {
                 obj = (xDoc.XPathEvaluate(xPath) as IEnumerable).Cast<XObject>().FirstOrDefault();
             }
-            switch (obj.NodeType)
+            switch (obj?.NodeType)
             {
                 case System.Xml.XmlNodeType.Attribute:
                     return ((XAttribute)obj).Value.Trim();
                 case System.Xml.XmlNodeType.Element:
                     return ((XElement)obj).Value.Trim();
+                default:
+                    return null;
             }
-            return null;
+        }
+
+        /// <summary>
+        /// Get the string value of the XPath. Note null will be returned if not found.
+        /// <para>e.g. GetValue("//config", fale)</para>
+        /// </summary>
+        /// <param name="xPath">XPath string</param>
+        /// <param name="isIgnoreCase">if true, the matching will ignore case.</param>
+        /// <param name="defaultValue">defaultValue can be provided to override default null</param>
+        /// <returns>string value result</returns>
+        public virtual string GetValue(string xPath, bool isIgnoreCase = false, string defaultValue = null)
+        {
+            return GetValue(xPath, isIgnoreCase) ?? defaultValue;
         }
 
         private void BuildLowerDoc()

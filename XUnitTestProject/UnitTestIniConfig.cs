@@ -96,5 +96,29 @@ Interval = 5
             int z = config[@"//Default/Interval"].ToObject<int>();
             Assert.Equal(z.ToString(), config.GetValue("Default", "Interval"));
         }
+
+        [Fact(DisplayName = "check test")]
+        public void Test5()
+        {
+            string str = @";距离单位为m，时间单位为ms
+[Dynamic]
+Interval = 5
+Delay = 4000
+
+[Default]
+Interval = 5
+";
+            System.IO.File.WriteAllText("test", str);
+            ConfigManager config = new ConfigManager("test");
+            Assert.Null(config[@"/Default/Interval6"]);
+            Assert.Equal("5", config[@"/Default/Interval"]);
+            config[@"//Default/Interval"] = "6";
+            Assert.Equal("6", config[@"//Default/Interval"]);
+            config.Save();
+            config = new ConfigManager("test");
+            Assert.Equal("6", config[@"//Default/Interval"]);
+            int z = config[@"//Default/Interval"].ToObject<int>();
+            Assert.Equal(z.ToString(), config.GetValue("Default", "Interval"));
+        }
     }
 }
