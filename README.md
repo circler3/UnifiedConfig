@@ -37,8 +37,11 @@ Issues and PRs are welcomed.
 - [ ] ~~Support for int indexer~~ is removed since the xpath supported already
 - [ ] *Ready to go* template project
 - [X] Case-sensitive swtich for path matching
+- [X] Return null other than throwing error if xpath not exist
 
 ## Update Notes
+UPDATE 2020/06/05: Return null if xpath not exists.
+
 UPDATE 2017/07/29: Add Case-sensitive swtich for path matching
 
 UPDATE 2017/07/25: Add Name property and fix the IEnumerable bug.
