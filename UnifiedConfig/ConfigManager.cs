@@ -135,6 +135,19 @@ namespace UnifiedConfig
         {
             return config.GetValue(xPath, ignoreCase);
         }
+
+        /// <summary>
+        /// Get the string value of the XPath.
+        /// <para>e.g. GetValue("//config", fale)</para>
+        /// </summary>
+        /// <param name="xPath">XPath string</param>
+        /// <param name="ignoreCase">if true, the matching will ignore case.</param>
+        /// <param name="defaultValue">defaultValue can be provided to override default null</param>
+        /// <returns>string value result</returns>
+        public string GetValue(string xPath, bool ignoreCase = false, string defaultValue = null)
+        {
+            return config.GetValue(xPath, ignoreCase, defaultValue);
+        }
         /// <summary>
         /// Save the config into file
         /// </summary>
